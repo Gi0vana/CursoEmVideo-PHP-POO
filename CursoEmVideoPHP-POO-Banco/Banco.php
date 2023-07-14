@@ -1,3 +1,5 @@
+
+
 <?php
     class Banco {
         public $numConta;
@@ -6,7 +8,16 @@
         private $saldo;
         private $status;
 
-        
+         /**
+         * Summary of Banco
+         * @return void
+         */
+        function __construct(){
+            $this->setSaldo(0);
+            $this->setStatus(false);
+            echo "<p> Conta criada com sucesso!</p>";
+           }
+
         public function abrirConta($t){
            $this->setTipo($t);
            $this-> setStatus(true);
@@ -38,32 +49,32 @@
             }
         }
         public function sacar($v){
-            if ($this->getStatus){
-                if ($this->getSaldo()>$v){
-                    $this->setSaldo = $this->getSaldo()-$v;
-
+            if ($this->getStatus()){
+                if ($this->getSaldo() > $v){
+                    $this ->setSaldo( $this->getSaldo()-$v);
                     } else {
-                    echo ("<p>Saldo insufuciente!</p>");
+                    echo ("<p>Saldo insufuciente para sque!</p>");
                     }
             } else {
                 echo ("<p>Impossível sacar!A conta está fechada</p>");
             }
         }
 
-       function __construct(){
-        $this->$setSaldo(0);
-        $this->setStatus(false);
-
-       }
 
         public function pagarMensal($v){
             if($this->getTipo() == "CC" ){
-              echo "VC PAROU DE EDITAR AQUI... CONTINUE ARRUMANDO O PAGAR MENSAL, 15:35 (AULA HORÁRIO)";
+                $V =12;
+            }else if ($this->getTipo() == "CP"){
+                $v =20;
+            }
+            if ($this->getStatus()){
+                $this->setSaldo($this->getSaldo() - $v);
             }else{
-                echo "TERMINA DE EDITAR";
+                echo "<p>Problemas com a conta.Não posso cobrar!</p>";
             }
         }
 
+       
 	public function getSaldo() {
 		return $this->saldo;
 	}
