@@ -29,9 +29,9 @@
         }
 
         public function fecharConta(){
-            if ($this->getSaldo() >= 1){
+            if ($this->getSaldo() > 0){
                 echo ("<p> Conta com dinheiro, não posso fecha-la!</p>");
-            }elseif ($this->getSaldo()<=1){
+            }elseif ($this->getSaldo()< 0){
                 echo ("<p> Conta em débito. Impossível encerrar! </p>");
             } else{
                 $this->setStatus(false);
