@@ -29,9 +29,9 @@
         }
 
         public function fecharConta(){
-            if ($this->getSaldo() > 0){
+            if ($this->getSaldo() >= 1){
                 echo ("<p> Conta com dinheiro, não posso fecha-la!</p>");
-            }elseif ($this->getSaldo()<0){
+            }elseif ($this->getSaldo()<=1){
                 echo ("<p> Conta em débito. Impossível encerrar! </p>");
             } else{
                 $this->setStatus(false);
@@ -50,10 +50,10 @@
         }
         public function sacar($v){
             if ($this->getStatus()){
-                if ($this->getSaldo() > $v){
+                if ($this->getSaldo() >= $v){
                     $this ->setSaldo( $this->getSaldo()-$v);
                     } else {
-                    echo ("<p>Saldo insufuciente para sque!</p>");
+                    echo ("<p>Saldo insufuciente para saque! POBRE!</p>");
                     }
             } else {
                 echo ("<p>Impossível sacar!A conta está fechada</p>");
@@ -61,11 +61,11 @@
         }
 
 
-        public function pagarMensal($v){
+        public function pagarMensal(){
             if($this->getTipo() == "CC" ){
-                $V =12;
+                $v = 12;
             }else if ($this->getTipo() == "CP"){
-                $v =20;
+                $v = 20;
             }
             if ($this->getStatus()){
                 $this->setSaldo($this->getSaldo() - $v);
