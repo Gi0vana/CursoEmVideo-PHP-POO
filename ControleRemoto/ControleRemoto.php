@@ -13,17 +13,12 @@ class ControleRemoto implements Controlador {
         $this->tocando =false;
     }
 
-	/**
-	 * @return mixed
-	 */
+	
 	public function getTocando() {
 		return $this->tocando;
 	}
 	
-	/**
-	 * @param mixed $tocando 
-	 * @return self
-	 */
+	
 	public function setTocando($tocando): self {
 		$this->tocando = $tocando;
 		return $this;
